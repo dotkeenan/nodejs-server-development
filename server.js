@@ -1,5 +1,10 @@
 const express = require('express')
 const dotenv = require('dotenv')
+//import the mongodb connection module
+const connectDB = require('./config/db')
+
+// connect to mongoDB before intializing the express app()
+connectDB()
 
 const app = express();
 
