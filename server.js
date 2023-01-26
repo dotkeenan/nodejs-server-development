@@ -3,6 +3,9 @@ const dotenv = require('dotenv')
 //import the mongodb connection module
 const connectDB = require('./config/db')
 
+//configure the path for dotenv so that application can read from it
+dotenv.config({path: './config/config.env'})
+
 // connect to mongoDB before intializing the express app()
 connectDB()
 
