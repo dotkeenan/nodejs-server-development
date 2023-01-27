@@ -8,6 +8,7 @@ const getUsers = async (req, res, next) => {
     const options = {}
 
     // check if the req query is empty?
+    // sets options properties if these optional queries do exist (the 1,2, or 3 arguments for find())
     if (Object.keys(req.query).length) {
       const {
         sortByFirstName, //this value will either be 'asc' or 'dsc' for ascend/descend
