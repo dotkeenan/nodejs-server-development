@@ -6,6 +6,7 @@ const logger = require ('./utils/logger')
 // create a path to for the controller to listen to the user (more or less)
 const user = require('./routes/user')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 //configure the path for dotenv so that application can read from it
 dotenv.config({path: './config/config.env'})
@@ -17,6 +18,8 @@ const app = express();
 
 //add body parser
 app.use(bodyParser.json())
+//ability to read cookies
+app.use(cookieParser())
 
 const PORT = process.env.PORT || 5001
 
