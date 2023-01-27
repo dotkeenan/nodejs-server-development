@@ -48,6 +48,18 @@ const UserSchema = new Schema({
   timestamps: true
 })
 
+//pre-hook that gets triggered by any 'save' crud operation (not get)
+//did NOT use a arrow function because need to use 'this' keyword for this specific instanced class.
+// arrow function would not know what 'this' is because its out of scope.
+UserSchema.pre('save', async function(next) {
+  // the hashing will only coming in effect if the password was updated, or there was never one in the first place
+  if (!this.isModified('password')) {
+    next();
+  }
 
+  //salting
+  const salt = await bcrypt.genSalt(10) //how many random characters to add. 10 is recommended by documentation
+
+})
 
 module.exports = mongoose.model('User', UserSchema)
