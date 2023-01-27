@@ -15,6 +15,9 @@ connectDB()
 
 const app = express();
 
+//add body parser
+app.use(bodyParser.json())
+
 const PORT = process.env.PORT || 5001
 
 //use the logger after the port is defined
