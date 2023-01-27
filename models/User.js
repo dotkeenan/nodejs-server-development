@@ -59,7 +59,8 @@ UserSchema.pre('save', async function(next) {
 
   //salting
   const salt = await bcrypt.genSalt(10) //how many random characters to add. 10 is recommended by documentation
-
+  // combine the salt with the password and encrypt
+  this.password = await bcrypt.hash(this.password, salt)
 })
 
 module.exports = mongoose.model('User', UserSchema)
