@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 //instantiate a new schema class
 const Schema = mongoose.Schema
+//crypto was only needed for resetting password
+// const crypto =  require('crypto')
+// bcrypt adds encryption to the jwt token
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const UserSchema = new Schema({
   userName: {
@@ -40,7 +45,9 @@ const UserSchema = new Schema({
     require: true
   }
 }, {
-  timeStamps: true
+  timestamps: true
 })
+
+
 
 module.exports = mongoose.model('User', UserSchema)
