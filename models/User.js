@@ -63,4 +63,14 @@ UserSchema.pre('save', async function(next) {
   this.password = await bcrypt.hash(this.password, salt)
 })
 
+//create the auth token when user gets created
+UserSchema.methods.getSignedJwtToken = function() {
+  // jwt.sign() takes 3 args: id of user, jwt secret from, expiration time of jwt secret
+  return jwt.sign({id: this._id}, process.env.JWT_SECRET, {
+    // expire is in the form of an object with key and values as shown below
+    expiresIn: process.env.JWT_EXPIRE
+  })
+}
+
+
 module.exports = mongoose.model('User', UserSchema)
