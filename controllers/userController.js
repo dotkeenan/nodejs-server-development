@@ -17,6 +17,7 @@ const getUsers = async (req, res, next) => {
 //second controller create a user
 const createUser = async (req, res, next) => {
   try {
+    console.log(req.body)
     const result = await User.create(req.body)
 
     res
@@ -24,7 +25,7 @@ const createUser = async (req, res, next) => {
     .setHeader('Content-Type', 'application/json')
     .json(result)
   } catch (error) {
-    throw new Error(`Error getting creating a user: ${error.message}`)
+    throw new Error(`Error creating a user: ${error.message}`)
   }
 }
 
