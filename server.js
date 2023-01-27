@@ -5,7 +5,7 @@ const connectDB = require('./config/db')
 const logger = require ('./utils/logger')
 // create a path to for the controller to listen to the user (more or less)
 const user = require('./routes/user')
-
+const bodyParser = require('body-parser')
 
 //configure the path for dotenv so that application can read from it
 dotenv.config({path: './config/config.env'})
